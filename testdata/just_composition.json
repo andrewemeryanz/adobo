@@ -56,6 +56,20 @@
         },
         "referenced": {
             "$ref": "#/$defs/animal"
+        },
+        "animals": {
+            "patternProperties": {
+                ".*": {
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
         }
     },
     "$defs": {

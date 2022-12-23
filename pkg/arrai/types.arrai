@@ -19,7 +19,7 @@ let rec parse = \name \schema
     let conditional = \conditions
     (
         conditional: conditions => 
-            parse($`Opt${.@}`, .@item)
+            parse($`${name}Opt${.@}`, .@item)
     );
 
     let type = cond schema {
@@ -72,7 +72,7 @@ let rec parse = \name \schema
         {'type': 'object', ...}: (fields: {}),
         {'type': 'array', ...}:  (items: parse(name, {})),
         {'type': type, ...}:     (primitive: goPrimitiveType(type)?:'interface{}'),
-        {'not':_, ...}:          (primitive: 'interface{}'),
+        {'not': _, ...}:         (primitive: 'interface{}'),
         {}:                      (primitive: 'interface{}'),
         _:                       (undefined: schema),
     } +> 
@@ -167,10 +167,13 @@ let spreadType = \type
                                     # change complex types into type reference. For
                                     # map and array, only change their values into
                                     # reference because they're inlineable.
+                                    let subtype = \type \suffix cond type {
+                                        (:conditional, ...): (primitive: 'interface{}'),
+                                        _: typeRef(path ++ [.name, suffix]) };
                                     cond .type {
                                         (:fields, ...):      . +> (type: typeRef(path ++ [.name])),
-                                        (:key, :value, ...): . +> (type: (key: key.type, value: typeRef(path ++ [.name, 'value']))),
-                                        (:items, ...):       . +> (type: (items: typeRef(path ++ [.name, 'item']))),
+                                        (:key, :value, ...): . +> (type: (key: key.type, value: subtype(value.type, 'value'))),
+                                        (:items, ...):       . +> (type: (items: subtype(items.type, 'item'))),
                                         (:ref, ...):         . +> (type: resolveRef(path, ref)),
                                         (:conditional, ...): . +> (type: (primitive: 'interface{}')),
                                     }

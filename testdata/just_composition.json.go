@@ -5,31 +5,40 @@ package schema
 // testdata
 type JustComp struct {
     Age *interface{} `json:"age,omitempty" yaml:"age,omitempty"`
+    Animals *map[string]interface{} `json:"animals,omitempty" yaml:"animals,omitempty"`
     Blank *interface{} `json:"blank,omitempty" yaml:"blank,omitempty"`
     Data *interface{} `json:"data,omitempty" yaml:"data,omitempty"`
     Name *interface{} `json:"name,omitempty" yaml:"name,omitempty"`
     Referenced *JustCompDefsAnimal `json:"referenced,omitempty" yaml:"referenced,omitempty"`
 }
 
-type JustCompDefsAnimalOpt0 *JustCompDefsAnimal
+type JustCompAgeOpt0 float
 
-type JustCompDefsAnimalOpt1 string
+type JustCompAgeOpt1 float
 
-type JustCompDefsAnimalOpt2 struct {
-    Vertebrate *string `json:"vertebrate,omitempty" yaml:"vertebrate,omitempty"`
-}
+type JustCompAnimalsValueAnimalsOpt0 string
 
-type JustCompDefsAnimalOpt3 struct {
-    Invertebrate *string `json:"invertebrate,omitempty" yaml:"invertebrate,omitempty"`
-}
+type JustCompAnimalsValueAnimalsOpt1 string
 
-type JustCompOpt0 float
+type JustCompDataOpt0 string
 
-type JustCompOpt0 string
+type JustCompDataOpt1 float
 
-type JustCompOpt1 float
-
-type JustCompOpt2 struct {
+type JustCompDataOpt2 struct {
     Animal *string `json:"animal,omitempty" yaml:"animal,omitempty"`
     Vegetable *string `json:"vegetable,omitempty" yaml:"vegetable,omitempty"`
 }
+
+type JustCompDefsAnimalAnimalOpt0 *JustCompDefsAnimal
+
+type JustCompDefsAnimalAnimalOpt1 string
+
+type JustCompDefsAnimalAnimalOpt2 struct {
+    Vertebrate *string `json:"vertebrate,omitempty" yaml:"vertebrate,omitempty"`
+}
+
+type JustCompDefsAnimalAnimalOpt3 struct {
+    Invertebrate *string `json:"invertebrate,omitempty" yaml:"invertebrate,omitempty"`
+}
+
+type JustCompNameOpt0 string
