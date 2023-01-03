@@ -168,6 +168,7 @@ let spreadType = \type
                                     # map and array, only change their values into
                                     # reference because they're inlineable.
                                     let subtype = \type \suffix cond type {
+                                        (:ref, ...): resolveRef(path, ref),
                                         (:conditional, ...): (primitive: 'interface{}'),
                                         _: typeRef(path ++ [.name, suffix]) };
                                     cond .type {
@@ -203,8 +204,9 @@ let spreadType = \type
                 }
             ,
             (:conditional, ...):
+                # TODO: Verify. This doesn't match the container type patterns above.
+                {type +> (type:(primitive: 'interface{}'), :path)} |
                 //rel.union(conditional where !(.).type.undefined?:false =>
-                        # TODO: Verify. This doesn't match the container type patterns above.
                         let subs = (spread(path ++ [.name], .));
                         subs => . +> (path: path ++ [.name])
                 )

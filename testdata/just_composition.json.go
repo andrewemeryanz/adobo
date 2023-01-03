@@ -16,6 +16,8 @@ type JustCompAgeOpt0 float
 
 type JustCompAgeOpt1 float
 
+type JustCompAnimalsValue interface{}
+
 type JustCompAnimalsValueAnimalsOpt0 string
 
 type JustCompAnimalsValueAnimalsOpt1 string
@@ -28,6 +30,8 @@ type JustCompDataOpt2 struct {
     Animal *string `json:"animal,omitempty" yaml:"animal,omitempty"`
     Vegetable *string `json:"vegetable,omitempty" yaml:"vegetable,omitempty"`
 }
+
+type JustCompDefsAnimal interface{}
 
 type JustCompDefsAnimalAnimalOpt0 *JustCompDefsAnimal
 

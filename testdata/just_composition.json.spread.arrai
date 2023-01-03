@@ -16,6 +16,13 @@
   ),
   (
     {},
+    'JustCompAnimalsValue',
+    (
+      primitive: 'interface{}',
+    ),
+  ),
+  (
+    {},
     'JustCompAnimalsValueAnimalsOpt0',
     (
       primitive: 'string',
@@ -76,6 +83,13 @@
         ),
       },
       required: {},
+    ),
+  ),
+  (
+    {},
+    'JustCompDefsAnimal',
+    (
+      primitive: 'interface{}',
     ),
   ),
   (
