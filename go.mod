@@ -1,4 +1,4 @@
-module github.com/nofun97/adobo
+module github.com/andrewemeryanz/adobo
 
 go 1.18
 
